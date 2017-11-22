@@ -47,20 +47,7 @@ public class PaingroundApplication {
 	public CommandLineRunner loadData(MemberProfileRepository repository) {
 		return args -> {
 			
-			saveSomeProfiles(repository);
-			
-			// STEP 2
-			// save a couple of profiles
-			
-			// fetch all profiles
-			log.info("MemberProfiles found with findAll():");
-			log.info("-------------------------------");
-			for (MemberProfile profile : repository.findAll()) {
-				log.info(profile.toString());
-			}
-			log.info("");
 			deleteAllExistingProfiles(repository);
-			//saveSomeProfiles(repository);
 			importProfiles(repository);
 			fetchAndPrintAllProfiles(repository);
 		};
