@@ -52,8 +52,6 @@ public class PaingroundApplication {
 			// STEP 2
 			// save a couple of profiles
 			
-
-			
 			// fetch all profiles
 			log.info("MemberProfiles found with findAll():");
 			log.info("-------------------------------");
