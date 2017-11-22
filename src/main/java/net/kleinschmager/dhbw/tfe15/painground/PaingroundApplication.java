@@ -1,3 +1,6 @@
+/**
+ * copyright by Robert Kleinschmager
+ */
 package net.kleinschmager.dhbw.tfe15.painground;
 
 import org.slf4j.Logger;
@@ -11,12 +14,16 @@ import net.kleinschmager.dhbw.tfe15.painground.persistence.model.MemberProfile;
 import net.kleinschmager.dhbw.tfe15.painground.persistence.repository.MemberProfileRepository;
 
 @SpringBootApplication
-
 public class PaingroundApplication {
 	
 	private static final Logger log = LoggerFactory.getLogger(PaingroundApplication.class);
 
 
+	/**
+	 * the main method
+	 * 
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		SpringApplication.run(PaingroundApplication.class, args);
 	}
@@ -31,16 +38,11 @@ public class PaingroundApplication {
 	@Bean
 	public CommandLineRunner loadData(MemberProfileRepository repository) {
 		return (args) -> {
+			
+			saveSomeProfile(repository);
+			
+			// STEP 2
 			// save a couple of profiles
-			repository.save(new MemberProfile("robkle", "Kleinschmager"));
-			repository.save(new MemberProfile("mickni", "Knight"));
-			repository.save(new MemberProfile("geolaf", "Laforge"));
-			repository.save(new MemberProfile("Dieter", "Zetsche"));
-			repository.save(new MemberProfile("homsim", "Simpsons"));
-			repository.save(new MemberProfile("timo", "Bob"));
-			repository.save(new MemberProfile("hans", "Hans"));
-			repository.save(new MemberProfile("dusty", "Dustin"));
-			repository.save(new MemberProfile("manni", "Manfred"));
 			
 			// fetch all profiles
 			log.info("MemberProfiles found with findAll():");
@@ -50,6 +52,8 @@ public class PaingroundApplication {
 			}
 			log.info("");
 
+			// STEP 3
+			
 			// fetch an individual customer by ID
 			MemberProfile profile = repository.findOne(1L);
 			log.info("Profile found with findOne(1L):");
@@ -58,5 +62,16 @@ public class PaingroundApplication {
 			log.info("");
 
 		};
+	}
+
+	private void saveSomeProfile(MemberProfileRepository repository) {
+		// save a couple of profiles
+		repository.save(new MemberProfile("robkle", "Kleinschmager"));
+		repository.save(new MemberProfile("mickni", "Knight"));
+		repository.save(new MemberProfile("geolaf", "Laforge"));
+
+		repository.save(new MemberProfile("Thomas", "Zetsche"));
+		repository.save(new MemberProfile("homsim", "Simpsons"));
+		repository.save(new MemberProfile("timo", "Bob"));
 	}
 }
