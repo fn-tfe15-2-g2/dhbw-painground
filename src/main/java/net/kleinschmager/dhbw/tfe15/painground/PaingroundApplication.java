@@ -47,7 +47,7 @@ public class PaingroundApplication {
 	public CommandLineRunner loadData(MemberProfileRepository repository) {
 		return args -> {
 			
-			saveSomeProfile(repository);
+			saveSomeProfiles(repository);
 			
 			// STEP 2
 			// save a couple of profiles
