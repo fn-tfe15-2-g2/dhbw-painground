@@ -47,7 +47,7 @@ public class PaingroundApplication {
 	public CommandLineRunner loadData(MemberProfileRepository repository) {
 		return args -> {
 			
-			saveSomeProfile(repository);
+			saveSomeProfiles(repository);
 			
 			// STEP 2
 			// save a couple of profiles
@@ -60,7 +60,6 @@ public class PaingroundApplication {
 			}
 			log.info("");
 			deleteAllExistingProfiles(repository);
-			//saveSomeProfiles(repository);
 			importProfiles(repository);
 			fetchAndPrintAllProfiles(repository);
 		};
@@ -80,6 +79,7 @@ public class PaingroundApplication {
 		log.info(() -> "");
 	}
 
+
 	private void saveSomeProfiles(MemberProfileRepository repository) {
 		// save a couple of profiles
 		repository.save(new MemberProfile("robkle", "Kleinschmager"));
@@ -92,6 +92,7 @@ public class PaingroundApplication {
 		repository.flush();
 	}
 	
+
 	private void importProfiles(MemberProfileRepository repository) {
 		
 		URL inputFileUrl = PaingroundApplication.class.getClassLoader().getResource("db/initial_data.csv");
