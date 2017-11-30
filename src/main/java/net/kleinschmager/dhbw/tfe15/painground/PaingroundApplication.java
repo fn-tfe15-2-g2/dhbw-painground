@@ -59,6 +59,7 @@ public class PaingroundApplication {
 				log.info(profile.toString());
 			}
 			log.info("");
+
 			deleteAllExistingProfiles(repository);
 			importProfiles(repository);
 			fetchAndPrintAllProfiles(repository);
